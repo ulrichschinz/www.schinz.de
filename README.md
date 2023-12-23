@@ -2,6 +2,12 @@
 
 App to drive https://www.schinz.de
 
+I wanted to have my website rewritten. So I started to do it in clojure, which I like very much.  
+
+As the first move, I started implementing a way to write markdown files that are being generated as html-files. So I can write my howtos, memos and other infos just as markdownfiles and they will be nicely readable and I can access them any time.  
+
+Other stuff will follow... and it's only a fun project. Sadly I seldom find time to drive it or improve it...  
+
 ## Installation
 
 Download from https://github.com/ulrichschinz/www.schinz.de
