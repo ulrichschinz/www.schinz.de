@@ -1,0 +1,25 @@
+---
+version: '3'
+services:
+  www:
+    networks:
+      - proxynet
+    volumes:
+      - ${PWD}/volumes/cheatsheets:/opt/app/cheatsheets
+    environment:
+      - WWW_CS_DIR=/opt/app/cheatsheets
+    labels:
+      - "traefik.http.routers.wsd-http.entrypoints=web"
+      - "traefik.http.routers.wsd-http.rule=Host(`www.schinz.de`)"
+      - "traefik.http.routers.wsd-http.middlewares=wsd-https"
+      - "traefik.http.middlewares.wsd-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.wsd.rule=Host(`www.schinz.de`)"
+      - "traefik.http.routers.wsd.entrypoints=websecure"
+      - "traefik.http.routers.wsd.service=svc_wsd"
+      - "traefik.http.services.svc_wsd.loadbalancer.server.port=3030"
+      - "traefik.http.routers.wsd.tls=true"
+      - "traefik.http.routers.wsd.tls.certresolver=letsencrypt"
+networks:
+  proxynet:
+    name: reverse-proxy_reverse-proxy
+    external: true

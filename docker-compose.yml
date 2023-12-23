@@ -1,0 +1,7 @@
+---
+version: '3'
+services:
+  www:
+    image: wwwschinzde:latest
+    container_name: wwwschinzde
+    restart: always
